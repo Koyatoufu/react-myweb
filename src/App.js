@@ -1,52 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import HomeView from "./views/HomeView";
+import Home from './pages/Home'
+import Not from './pages/Not'
+import Intro from './pages/Intro'
+import Contact from './pages/Contact'
+import Games from "./pages/Games";
+import Port from "./pages/Port";
+
+import lenis from "./utils/lenis.js";
+import link from "./utils/link.js";
 
 const App = () => {
+    useEffect(() => {
+        lenis();
+        link();
+    }, []);
+
     return (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<HomeView />} />
-        </Routes>
-    </BrowserRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/intro' element={<Intro />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/games' element={<Games />} />
+                <Route path='/port' element={<Port />} />
+                <Route path='*' element={<Not />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 
 export default App;
-
-// import Home from './pages/Home'
-// import Today from './pages/Today'
-// import Developer from './pages/Developer'
-// import Webd from './pages/Webd'
-// import Website from './pages/Website'
-// import Gsap from './pages/Gsap'
-// import Port from './pages/Port'
-// import Youtube from './pages/Youtube'
-// import Channel from './pages/Channel'
-// import Video from './pages/Video'
-// import Search from './pages/Search'
-// import Not from './pages/Not'
-
-// const App = () => {
-//     return (
-//         <BrowserRouter>
-//             <Routes>
-//                 <Route path='/' element={<Home />} />
-//                 <Route path='/today' element={<Today />} />
-//                 <Route path='/developer' element={<Developer />} />
-//                 <Route path='/webd' element={<Webd />} />
-//                 <Route path='/website' element={<Website />} />
-//                 <Route path='/gsap' element={<Gsap />} />
-//                 <Route path='/port' element={<Port />} />
-//                 <Route path='/youtube' element={<Youtube />} />
-//                 <Route path='/channel/:channelId' element={<Channel />} />
-//                 <Route path='/video/:videoId' element={<Video />} />
-//                 <Route path='/search/:searchId' element={<Search />} />
-//                 <Route path='*' element={<Not />} />
-//             </Routes>
-//         </BrowserRouter>
-//     );
-// }
-
-// export default App;
